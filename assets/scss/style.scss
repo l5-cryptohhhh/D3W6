@@ -1,0 +1,186 @@
+// ================================================
+// EpiShop — Stili principali
+// Compilare con: sass scss/style.scss css/style.css
+// ================================================
+
+// ------------------------------------------------
+// 1. Variabili
+// ------------------------------------------------
+$colore-sfondo-card:   #f0f0f0;
+$colore-sfondo-modal:  #e9e9e9;
+$altezza-card:         180px;
+$altezza-modal:        300px;
+
+// Tema scuro — valori usati quando body ha .dark
+$dark-bg-main:         #1a1a1a;
+$dark-bg-card:         #2c2c2c;
+$dark-bg-sidebar:      #2c2c2c;
+$dark-bg-card-img:     #3a3a3a;
+$dark-bg-modal:        #3a3a3a;
+$dark-text-primary:    #f0f0f0;
+$dark-text-muted:      #aaaaaa;
+$dark-border:          #444444;
+
+// ------------------------------------------------
+// 2. Comportamento scroll
+// ------------------------------------------------
+html {
+  scroll-behavior: smooth;
+}
+
+// ------------------------------------------------
+// 3. Bottoni personalizzati (dalla traccia originale)
+// ------------------------------------------------
+.personalBtn {
+  background-color: cadetblue;
+
+  &:hover {
+    background-color: rebeccapurple;
+  }
+}
+
+// ------------------------------------------------
+// 4. Box immagine nelle card prodotto
+// ------------------------------------------------
+.box-immagine-card {
+  background-color: $colore-sfondo-card;
+  height: $altezza-card;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+}
+
+// ------------------------------------------------
+// 5. Box immagine nel Modal
+// ------------------------------------------------
+.box-immagine-modal {
+  background-color: $colore-sfondo-modal;
+  height: $altezza-modal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+}
+
+// ------------------------------------------------
+// 6. Bottone toggle tema nella navbar
+// ------------------------------------------------
+.btn-tema {
+  color: #fff;
+  border: 1px solid #fff;
+  background-color: transparent;
+  border-radius: 4px;
+  padding: 4px 12px;
+  font-size: 0.9rem;
+  transition: background-color 0.2s, color 0.2s;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #fff;
+  }
+}
+
+// ------------------------------------------------
+// 7. TEMA SCURO (body.dark)
+//    Navbar e footer restano invariati.
+//    Il !important sovrascrive bg-white di Bootstrap sul body.
+// ------------------------------------------------
+body.dark {
+
+  // Sfondo intero body (area tra navbar e footer)
+  background-color: $dark-bg-main !important;
+
+  // Sfondo area contenuto principale
+  main {
+    background-color: $dark-bg-main;
+  }
+
+  // Sidebar categorie
+  aside .card {
+    background-color: $dark-bg-sidebar !important;
+    border-color: $dark-border !important;
+
+    h5 {
+      color: $dark-text-primary;
+    }
+
+    a {
+      color: $dark-text-primary !important;
+
+      &:hover {
+        color: #adb5bd !important;
+      }
+    }
+  }
+
+  // Titolo sezione prodotti
+  #sezione-prodotti h3 {
+    color: $dark-text-primary;
+  }
+
+  // Card prodotti
+  .card {
+    background-color: $dark-bg-card !important;
+    border-color: $dark-border !important;
+
+    // Titolo prodotto
+    .card-title {
+      color: $dark-text-primary !important;
+    }
+
+    // Descrizione prodotto
+    .card-text {
+      color: $dark-text-muted !important;
+    }
+
+    // Prezzo
+    .fw-bold.text-dark {
+      color: $dark-text-primary !important;
+    }
+  }
+
+  // Box immagine card in dark mode
+  .box-immagine-card {
+    background-color: $dark-bg-card-img;
+  }
+
+  // Box immagine modal in dark mode
+  .box-immagine-modal {
+    background-color: $dark-bg-modal;
+  }
+
+  // Modal in dark mode
+  .modal-content {
+    background-color: $dark-bg-card;
+    color: $dark-text-primary;
+
+    .modal-title {
+      color: $dark-text-primary !important;
+    }
+
+    p {
+      color: $dark-text-primary !important;
+    }
+
+    .fw-bold {
+      color: $dark-text-primary !important;
+    }
+
+    .btn-close {
+      filter: invert(1);
+    }
+  }
+}
